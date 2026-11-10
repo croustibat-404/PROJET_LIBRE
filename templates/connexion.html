@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Connexion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}">
 </head>
 <body>
-    <form id="form_connexion" action="index.html" method="post">
+    <form id="form_connexion" action="/" method="post">
         <fieldset class="connexion">
             <legend>Formulaire de connexion</legend>
             <div class="champ">
-                <label for="id_mail">Identifiant :</label><input type="text" name="login" id="id_mail" placeholder="00000" required size="20"><br>
+                <label for="id_mail">Identifiant :</label><input type="text" name="login" id="id_mail" placeholder="abcde@mail.com" required size="20"><br>
             </div>
             <div class="champ">
                 <label for="id_pass">Mot de passe :</label><input type="password" name="pass" id="id_pass" required size="10"><br>
             </div>
             <p id="message"></p>
-            <p id="text_nouv">Vous êtes nouveau ? Alors créez-vous un compte <a href="inscription.html">ici</a></p>
+            <p id="text_nouv">Vous êtes nouveau ? Alors créez-vous un compte <a href="/inscription">ici</a></p>
             <input type="submit" name="connect" value="Connexion">
         </fieldset>
     </form>
