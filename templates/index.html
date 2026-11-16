@@ -1,15 +1,87 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espace Client</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}">
-</head>
-<body>
-    <article>
-        
-    </article>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+<div class="dashboard-grid">
+    <div class="center-column">
+
+        <section class="card balance-card">
+            <div class="balance-info">
+                <div>
+                    <span class="label">Solde</span>
+                    <div class="balance-row">
+                        <h1 class="amount">€10 000,00</h1>
+                        <span class="date">26/10/2026</span>
+                    </div>
+                </div>
+
+                <div class="limits-row">
+                    <div class="limit-item">
+                        <span class="label-blue">Plafond de paiement</span>
+                        <span class="limit-value">€5 000,00</span>
+                    </div>
+                    <div class="limit-item">
+                        <span class="label-blue">En cours</span>
+                        <span class="limit-value">€0,00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <a href="#" class="btn-primary">Virement</a>
+                <a href="#" class="btn-primary">Cartes</a>
+            </div>
+        </section>
+
+        <section class="card transactions-card">
+            <h2 class="card-title">Derniers mouvements</h2>
+            <div class="transaction-list">
+                <div class="transaction-item">
+                    <span class="t-name">Jean pierre</span>
+                    <span class="t-type">Virement instantané</span>
+                    <span class="t-amount negative">- 40,00 €</span>
+                </div>
+                <div class="transaction-item">
+                    <span class="t-name">McDonalds</span>
+                    <span class="t-type">Paiement</span>
+                    <span class="t-amount negative">- 15,00 €</span>
+                </div>
+                <div class="transaction-item">
+                    <span class="t-name">Bourse régionale</span>
+                    <span class="t-type">Virement bancaire</span>
+                    <span class="t-amount positive">+ 105,00 €</span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <aside class="card news-card">
+        <h2 class="card-title">Actualités</h2>
+        <div class="news-list">
+            <article class="news-item">
+                <div class="news-icon">💳</div>
+                <div class="news-text">
+                    <h3>Nouvelles fonctionnalités carte</h3>
+                    <p>Découvrez le paiement sans contact plafonné personnalisable directement depuis votre espace.</p>
+                </div>
+            </article>
+            <article class="news-item">
+                <div class="news-icon">📈</div>
+                <div class="news-text">
+                    <h3>Point sur les marchés</h3>
+                    <p>Analyse hebdomadaire des taux d'épargne et des nouveaux livrets disponibles.</p>
+                </div>
+            </article>
+            <article class="news-item">
+                <div class="news-icon">🔒</div>
+                <div class="news-text">
+                    <h3>Sécurité renforcée</h3>
+                    <p>Activez l'authentification biométrique pour valider vos virements instantanés.</p>
+                </div>
+            </article>
+        </div>
+    </aside>
+</div>
+{% endblock %}
