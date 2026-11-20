@@ -121,6 +121,7 @@ def creer_utilisateur(donnees, mot_de_passe):
         return numero_client
     finally:
         conn.close()
+        
 
 @app.route("/")
 def accueil():
