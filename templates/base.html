@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankUqac - {% block title %}Espace Client{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="topbar">
+    <div class="logo">BankUqac</div>
+    <div class="user-profile">
+        <span class="user-name">{{ user_name | default('Tom P') }}</span>
+        <div class="avatar">TP</div>
+    </div>
+</header>
+
+<div class="app-layout">
+    <aside class="sidebar">
+        <nav class="nav-menu">
+            <a href="#" class="nav-item {% if active_page == 'accueil' %}active{% endif %}">
+                <span>Accueil</span>
+                <span class="icon">🏛️</span>
+            </a>
+            <a href="#" class="nav-item {% if active_page == 'espace' %}active{% endif %}">
+                <span>Espace client</span>
+                <span class="icon">👤</span>
+            </a>
+            <a href="#" class="nav-item {% if active_page == 'cartes' %}active{% endif %}">
+                <span>Cartes</span>
+                <span class="icon">💳</span>
+            </a>
+            <a href="#" class="nav-item {% if active_page == 'actualites' %}active{% endif %}">
+                <span>Actualités</span>
+                <span class="icon">📰</span>
+            </a>
+            <a href="#" class="nav-item {% if active_page == 'parametres' %}active{% endif %}">
+                <span>Paramètres</span>
+                <span class="icon">⚙️</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,334 @@
+:root {
+    --bg-main: #f4f7fb;
+    --bg-white: #ffffff;
+    --blue-primary: #2b7de9;
+    --blue-hover: #1e68cc;
+    --blue-light: #dce9f9;
+    --blue-soft: #eef5fd;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #cbd5e1;
+    --border-blue: #93c5fd;
+    --radius-lg: 16px;
+    --radius-pill: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- TOPBAR --- */
+.topbar {
+    background-color: var(--bg-white);
+    height: 70px;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #3b6ea5;
+    letter-spacing: -0.5px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.user-name {
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: var(--blue-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    border: 2px solid var(--blue-light);
+}
+
+/* --- LAYOUT GLOBAL --- */
+.app-layout {
+    display: flex;
+    flex: 1;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    width: 220px;
+    background-color: var(--bg-white);
+    padding: 28px 18px;
+    border-right: 1px solid #e2e8f0;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--text-dark);
+    background-color: var(--blue-soft);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover, .nav-item.active {
+    background-color: var(--blue-light);
+    color: #1d4ed8;
+    font-weight: 600;
+}
+
+/* --- CONTENU PRINCIPAL --- */
+.main-content {
+    flex: 1;
+    padding: 28px;
+    background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    max-width: 1400px;
+}
+
+.center-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* --- CARTES --- */
+.card {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-blue);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    box-shadow: 0 4px 12px rgba(43, 125, 233, 0.04);
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #3b6ea5;
+    margin-bottom: 24px;
+}
+
+/* --- CARTE SOLDE --- */
+.balance-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 24px;
+}
+
+.balance-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.label {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.balance-row {
+    display: flex;
+    align-items: baseline;
+    gap: 32px;
+    margin-top: 6px;
+}
+
+.amount {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.date {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.limits-row {
+    display: flex;
+    gap: 60px;
+    margin-top: 40px;
+}
+
+.limit-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.label-blue {
+    font-size: 0.9rem;
+    color: #5b89c4;
+}
+
+.limit-value {
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+/* --- BOUTONS D'ACTION --- */
+.quick-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+    min-width: 210px;
+}
+
+.btn-primary {
+    background-color: var(--blue-primary);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 15px 24px;
+    border-radius: var(--radius-pill);
+    font-weight: 500;
+    font-size: 1.05rem;
+    box-shadow: 0 4px 10px rgba(43, 125, 233, 0.25);
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-primary:hover {
+    background-color: var(--blue-hover);
+    transform: translateY(-1px);
+}
+
+/* --- DERNIERS MOUVEMENTS --- */
+.transaction-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.transaction-item {
+    display: grid;
+    grid-template-columns: 1.2fr 1.2fr 0.8fr;
+    align-items: center;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.98rem;
+}
+
+.transaction-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.t-name {
+    font-weight: 500;
+}
+
+.t-type {
+    color: var(--text-muted);
+}
+
+.t-amount {
+    text-align: right;
+    font-weight: 600;
+}
+
+.t-amount.positive {
+    color: #2563eb;
+}
+
+/* --- ACTUALITÉS --- */
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.news-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+
+.news-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background-color: var(--blue-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.news-text h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.news-text p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-layout {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .nav-menu {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+    .balance-card {
+        flex-direction: column;
+    }
+}
