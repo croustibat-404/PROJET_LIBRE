@@ -9,54 +9,58 @@
 </head>
 <body class="page_inscription">
     <div class="inscription_container">
-        <!-- Formulaire d'inscription (vérifié et envoyé par script.js) -->
-        <form id="form_inscription" class="inscription" method="post">
+        <form id="form_inscription" class="inscription" action="{{ url_for('register') }}" method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <h1>Créer un compte</h1>
             <p class="sous_titre">Remplissez le formulaire pour vous inscrire.</p>
 
             <div class="ligne_inscription">
                 <div class="champ_inscription">
                     <label for="id_nom">Nom <span class="asterisque">*</span></label>
-                    <input type="text" name="nom" id="id_nom" placeholder="Nom" required>
+                    <input type="text" name="nom" id="id_nom" placeholder="Nom"
+                        value="{{ form.get('nom', '') }}" required maxlength="100" autocomplete="family-name">
                 </div>
                 <div class="champ_inscription">
                     <label for="id_prenom">Prénom <span class="asterisque">*</span></label>
-                    <input type="text" name="prenom" id="id_prenom" placeholder="Prénom" required>
+                    <input type="text" name="prenom" id="id_prenom" placeholder="Prénom"
+                        value="{{ form.get('prenom', '') }}" required maxlength="100" autocomplete="given-name">
                 </div>
-            </div>
-
-            <div class="champ_inscription">
-                <label for="id_pseudo">Pseudo <span class="asterisque">*</span></label>
-                <input type="text" name="pseudo" id="id_pseudo" placeholder="3 à 20 caractères" required>
             </div>
 
             <div class="champ_inscription">
                 <label for="id_mail">Adresse mail <span class="asterisque">*</span></label>
-                <input type="email" name="login" id="id_mail" placeholder="nom@domaine.com" required>
+                <input type="email" name="email" id="id_mail" placeholder="nom@domaine.com"
+                    value="{{ form.get('email', '') }}" required maxlength="254" autocomplete="email">
             </div>
 
             <div class="champ_inscription">
                 <label for="id_phone">Numéro de téléphone</label>
-                <input type="tel" name="phone" id="id_phone" placeholder="Facultatif">
+                <input type="tel" name="phone" id="id_phone" placeholder="Facultatif"
+                    value="{{ form.get('phone', '') }}" maxlength="20" autocomplete="tel">
             </div>
 
             <div class="champ_inscription">
                 <label for="id_pass">Mot de passe <span class="asterisque">*</span></label>
-                <input type="password" name="pass" id="id_pass" required oncut="return false;" oncopy="return false;">
+                <input type="password" name="password" id="id_pass" placeholder="8 caractères minimum"
+                    required minlength="8" maxlength="128" autocomplete="new-password">
             </div>
 
             <div class="champ_inscription">
                 <label for="id_pass_confirm">Confirmer le mot de passe <span class="asterisque">*</span></label>
-                <input type="password" name="pass_confirm" id="id_pass_confirm" required>
+                <input type="password" name="password_confirm" id="id_pass_confirm"
+                    required minlength="8" maxlength="128" autocomplete="new-password">
             </div>
 
-            <!-- Message d'erreur ou de succès -->
-            <p id="message" class=""></p>
+            {% if erreurs %}
+            <ul id="message" class="erreur">
+                {% for e in erreurs %}<li>{{ e }}</li>{% endfor %}
+            </ul>
+            {% endif %}
 
-            <input type="submit" name="connect" value="S'inscrire">
+            <input type="submit" value="S'inscrire">
 
             <p class="text_info"><span class="asterisque">*</span> Champ obligatoire</p>
-            <p id="text_nouv">Vous êtes déjà inscrit ? <a href="/connexion">Connectez-vous</a></p>
+            <p id="text_nouv">Vous êtes déjà inscrit ? <a href="{{ url_for('login') }}">Connectez-vous</a></p>
         </form>
     </div>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
